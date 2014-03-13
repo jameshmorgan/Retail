@@ -1,38 +1,39 @@
 FORMAT: 1A
-HOST: http://www.google.com
 
 # RetailJS
-Notes API is a *short texts saving* service similar to its physical paper presence on your table.
+RetailJS API is a REST-based API for RetailJS. The API will provide an interface to all data within the RetailJS system. 
 
-# Group Notes
-Notes related resources of the **Notes API**
+The API can be served out of a sub-domain http(s)://api.yourdomain.com/ on your site or from a directory such as http(s)://www.yourdomain.com/api/
 
-## Notes Collection [/notes]
-### List all Notes [GET]
+# Group Sites
+Sites related resources of the **RetailJS API**
+
+## Sites Collection [/sites]
+### List all Sites [GET]
 + Response 200 (application/json)
 
         [{
-          "id": 1, "title": "Jogging in park"
+          "_id": 52557fb5f97c493203000004, "title": "Tech Shop"
         }, {
-          "id": 2, "title": "Pick-up posters from post-office"
+          "_id": 5255be2582c4c39b0e000004, "title": "Book Store"
         }]
 
-### Create a Note [POST]
+### Create a Site [POST]
 + Request (application/json)
 
-        { "title": "Buy cheese and bread for breakfast." }
+        { "title": "Art Market" }
 
 + Response 201 (application/json)
 
-        { "id": 3, "title": "Buy cheese and bread for breakfast." }
+        { "_id": 5255cc1f9c68d58411000005, "title": "Art Market" }
 
-## Note [/notes/{id}]
-A single Note object with all its details
+## Site [/sites/{_id}]
+A single Site object with all its details
 
 + Parameters
-    + id (required, number, `1`) ... Numeric `id` of the Note to perform action with. Has example value.
-
-### Retrieve a Note [GET]
+    + _id (required, string, `5255cc1f9c68d58411000005`) ... Unique ID of this record.  It is a string data type representing a 12-byte BSON type. 
+    
+### Retrieve a Site [GET]
 + Response 200 (application/json)
 
     + Header
@@ -41,7 +42,7 @@ A single Note object with all its details
 
     + Body
 
-            { "id": 2, "title": "Pick-up posters from post-office" }
+            { "_id": 5255cc1f9c68d58411000005, "title": "Art Market" }
 
-### Remove a Note [DELETE]
+### Remove a Site [DELETE]
 + Response 204
